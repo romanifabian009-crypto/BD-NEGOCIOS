@@ -1,0 +1,26 @@
+{
+  "name": "reportes_mynegocio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.19.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.15.3",
+    "pdfkit": "^0.17.2",
+    "pdfkit-table": "^0.1.99",
+    "uuid": "^14.0.0"
+  },
+  "devDependencies": {
+    "import-path": "^1.0.15"
+  }
+}
