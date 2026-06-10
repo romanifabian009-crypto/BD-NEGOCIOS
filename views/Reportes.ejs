@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes MyNegocio</title>
+</head>
+<body>
+            <table border="1">
+            <caption>Panel de Reportes</caption>
+            <thead>
+                <tr>
+                    <th>Reporte</th>
+                    <th>Inicio</th>
+                    <th>Descripcion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Catzñogo de Categorias</td>
+                    <td>
+                        <form action="/Rpt_Categorias" method="GET">
+                            Catalogo de Categoria<br>
+                            <input type="submit" value="Categorias">       
+                        </form>
+                    </td>
+                    <td>
+                        Clik en el boton para obtener catalogo
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Catzlogo de Productos por Categoria</td>
+                    <td>
+                        <form action="/Rpt_Productos" method="POST">
+                            <input type="text" id="txtIdCat" name="txtIdCat" value="" />
+                        </form>
+                    </td>
+                    <td>
+                        ingrese el ID de la Categoria
+                    </td>
+                </tr>         
+
+                <tr>
+                    <td>Reporte de Pedido</td>
+                    <td>
+                        <form action="/Rpt_Pedidos" method="POST">
+                            <input type="text" id="txtIdPed" name="txtIdPed" value="" />
+                        </form>
+                    </td>
+                    <td>
+                        ingrese el Numero de Pedido
+                    </td>
+                </tr> 
+            </tbody>
+        </table>
+
+</body>
+</html>
