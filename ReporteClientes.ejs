@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Buscar Clientes</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      margin: 20px;
+    }
+
+    input {
+      padding: 6px;
+      width: 250px;
+    }
+
+    button {
+      padding: 6px 10px;
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+    }
+
+    th {
+      background: #333;
+      color: white;
+    }
+
+    .pdf-btn {
+      background: green;
+      color: white;
+      border: none;
+      padding: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2>🔎 Buscar Clientes</h2>
+
+<!-- 🔎 BUSCAR -->
+<form method="POST" action="/ReporteClientes">
+  <input type="text" name="texto" placeholder="Nombre empresa..." value="<%= texto %>">
+  <button type="submit">Buscar</button>
+</form>
+
+<!-- 📋 TABLA -->
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Empresa</th>
+    <th>Contacto</th>
+    <th>Ciudad</th>
+    <th>País</th>
+    <th>PDF</th>
+  </tr>
+
+  <% if (Clientes && Clientes.length > 0) { %>
+    <% Clientes.forEach(c => { %>
+      <tr>
+        <td><%= c.IdCliente %></td>
+        <td><%= c.NombreEmpresa %></td>
+        <td><%= c.NombreContacto %></td>
+        <td><%= c.Ciudad %></td>
+        <td><%= c.Pais %></td>
+
+        <!-- 📄 PDF POR CLIENTE -->
+        <td>
+          <form method="POST" action="/Rpt_ClienteSeleccionado">
+            <input type="hidden" name="idCliente" value="<%= c.IdCliente %>">
+            <button class="pdf-btn">PDF</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  <% } else { %>
+    <tr>
+      <td colspan="6">No hay resultados</td>
+    </tr>
+  <% } %>
+
+</table>
+
+<br>
+
+<a href="/">
+    <button>Volver al Home</button>
+</a>
+
+
+</body>
+</html>

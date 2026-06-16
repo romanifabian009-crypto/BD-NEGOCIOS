@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Empleados</title>
+</head>
+<body>
+
+<h2>CRUD EMPLEADOS</h2>
+
+<h2>CRUD EMPLEADOS</h2>
+
+<form action="/InsertarEmpleado" method="POST">
+
+  ID:
+  <input type="text" name="IdEmpleado"><br><br>
+
+  Nombre:
+  <input type="text" name="Nombre"><br><br>
+
+  Cargo:
+  <input type="text" name="Cargo"><br><br>
+
+  <button type="submit">
+    Nuevo Empleado
+  </button>
+
+</form>
+
+<hr>
+
+<form action="/ActualizarEmpleado" method="POST">
+
+  ID:
+  <input type="text" name="IdEmpleado">
+
+  <button type="submit">
+    Actualizar
+  </button>
+
+</form>
+
+<hr>
+
+<form action="/EliminarEmpleado" method="POST">
+
+  ID:
+  <input type="text" name="IdEmpleado">
+
+  <button type="submit">
+    Eliminar
+  </button>
+
+</form>
+
+<br>
+
+<a href="/">
+  <button>
+    Volver al Home
+  </button>
+</a>

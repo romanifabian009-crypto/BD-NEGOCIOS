@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Nuevo Pedido</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #f2f2f2;
+    }
+
+    .card {
+      width: 420px;
+      margin: 50px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px #ccc;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    select, input, button {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <h2>🧾 Nuevo Pedido</h2>
+
+  <form action="/InsertarPedido" method="POST">
+
+    <!-- CLIENTE -->
+    <label>Cliente:</label>
+    <select name="IdCliente" required>
+      <option value="">Seleccione cliente</option>
+
+      <% if (Clientes && Clientes.length > 0) { %>
+        <% Clientes.forEach(c => { %>
+          <option value="<%= c.IdCliente %>">
+            <%= c.NombreEmpresa %>
+          </option>
+        <% }) %>
+      <% } %>
+
+    </select>
+
+    <!-- PRODUCTO -->
+    <label>Producto:</label>
+    <select name="IdProducto" required>
+      <option value="">Seleccione producto</option>
+
+      <% if (Productos && Productos.length > 0) { %>
+        <% Productos.forEach(p => { %>
+          <option value="<%= p.IdProducto %>">
+            <%= p.NombreProducto %>
+          </option>
+        <% }) %>
+      <% } %>
+
+    </select>
+
+    <!-- CANTIDAD -->
+    <label>Cantidad:</label>
+    <input type="number" name="Cantidad" min="1" required>
+
+    <button type="submit">💾 Crear Pedido</button>
+
+  </form>
+
+  <a href="/"><button>⬅ Volver al menú</button></a>
+
+</div>
+
+
+
+</body>
+</html>

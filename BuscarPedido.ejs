@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buscar Pedido</title>
+    <style>
+        body{
+            font-family: Arial;
+            margin:20px;
+        }
+
+
+        table{
+            border-collapse: collapse;
+            width:100%;
+        }
+
+
+        th,td{
+            border:1px solid #ccc;
+            padding:8px;
+        }
+
+
+        th{
+            background:#333;
+            color:white;
+        }
+
+
+        input{
+            padding:8px;
+            width:200px;
+        }
+
+
+        button{
+            padding:8px 15px;
+        }
+    </style>
+</head>
+<body>
+
+
+<h2>Buscar Pedido</h2>
+
+
+<form method="POST" action="/BuscarPedido">
+    <input
+        type="number"
+        name="txtIdPed"
+        placeholder="Ingrese N° Pedido"
+        required
+        autofocus
+    >
+
+
+    <button type="submit">
+        Buscar
+    </button>
+</form>
+
+
+<% if(pedido && pedido.length>0){ %>
+
+
+<hr>
+
+
+<h3>Datos del Pedido</h3>
+
+
+<p><b>N° Pedido:</b> <%= pedido[0].IdPedido %></p>
+
+
+<p><b>Fecha:</b> <%= pedido[0].FechaPedido %></p>
+
+
+<form method="POST" action="/Rpt_Pedidos">
+    <input
+        type="hidden"
+        name="txtIdPed"
+        value="<%= pedido[0].IdPedido %>"
+    >
+
+
+    <button type="submit">
+        Ver PDF
+    </button>
+</form>
+
+
+<br>
+
+
+<table>
+    <tr>
+        <th>Item</th>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+        <th>Total</th>
+    </tr>
+
+
+    <% detalle.forEach(d => { %>
+    <tr>
+        <td><%= d.Item %></td>
+        <td><%= d.NombreProducto %></td>
+        <td><%= d.Cantidad %></td>
+        <td><%= d.PrecioUnidad %></td>
+        <td><%= d.ImpVta %></td>
+    </tr>
+    <% }) %>
+
+
+</table>
+
+
+<% } %>
+<a href="/">
+    <button>Volver al Home</button>
+</a>
+
+
+
+</body>
+</html>

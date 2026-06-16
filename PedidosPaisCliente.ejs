@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Pedidos por País y Cliente</title>
+
+<style>
+
+body{
+  font-family: Arial;
+  margin: 20px;
+  background: #fff5f5;
+}
+
+/* TÍTULO ROJO */
+h1{
+  background: linear-gradient(90deg, #b30000, #ff1a1a);
+  color: white;
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.3);
+}
+
+/* PANEL */
+.panel{
+  background: #ffe5e5;
+  padding: 20px;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid #ffb3b3;
+}
+
+/* SELECT */
+select{
+  width: 260px;
+  height: 180px;
+  border: 2px solid #ff4d4d;
+  border-radius: 8px;
+  outline: none;
+}
+
+/* BOTÓN ROJO */
+button{
+  padding: 12px 25px;
+  font-size: 18px;
+  background: #cc0000;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover{
+  background: #ff1a1a;
+}
+
+/* TABLA */
+table{
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
+}
+
+th{
+  background: #b30000;
+  color: white;
+  padding: 10px;
+}
+
+td{
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+
+tr:hover{
+  background: #ffe6e6;
+}
+
+/* CONTENEDOR */
+.contenedor{
+  display: flex;
+  gap: 30px;
+  margin-bottom: 15px;
+}
+
+label{
+  font-weight: bold;
+  color: #990000;
+}
+
+</style>
+</head>
+
+<body>
+
+    <h1>PEDIDOS POR PAÍS Y CLIENTE</h1>
+
+    <form method="POST">
+
+        <div class="contenedor">
+
+            <!-- PAIS -->
+            <div>
+                <label>PAÍS</label><br>
+                <select name="pais" onchange="this.form.submit()">
+
+                    <option value="">Seleccione</option>
+
+                    <% Paises.forEach(p=>{ %>
+                        <option value="<%= p.Pais %>" <%=paisSel==p.Pais ? 'selected' : '' %>>
+                            <%= p.Pais %>
+                        </option>
+                        <% }) %>
+
+                </select>
+            </div>
+
+            <!-- CLIENTE -->
+            <div>
+                <label>CLIENTE</label><br>
+                <select name="cliente">
+
+                    <% Clientes.forEach(c=>{ %>
+                        <option value="<%= c.IdCliente %>" <%=clienteSel==c.IdCliente ? 'selected' : '' %>>
+                            <%= c.NombreEmpresa %>
+                        </option>
+                        <% }) %>
+
+                </select>
+            </div>
+
+            <!-- BOTON -->
+            <div>
+                <button type="submit">Ver Pedidos</button>
+            </div>
+
+        </div>
+
+    </form>
+
+    <!-- TABLA -->
+    <table>
+
+        <tr>
+            <th>Id Pedido</th>
+            <th>Fecha Pedido</th>
+            <th>Empleado</th>
+            <th>Fecha Entrega</th>
+        </tr>
+
+        <% Pedidos.forEach(p=>{ %>
+            <tr>
+                <td>
+                    <%= p.IdPedido %>
+                </td>
+                <td>
+                    <%= p.FechaPedido %>
+                </td>
+                <td>
+                    <%= p.Empleado %>
+                </td>
+                <td>
+                    <%= p.FechaEntrega %>
+                </td>
+            </tr>
+            <% }) %>
+
+    </table>
+
+</body>
+<a href="/">
+    <button>Volver al Home</button>
+</a>
+
+</html>
