@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Catálogo de Productos</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    form {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    select, button {
+      padding: 8px;
+      margin: 5px;
+      font-size: 14px;
+    }
+
+    table {
+      width: 90%;
+      margin: auto;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    th {
+      background: #333;
+      color: white;
+      padding: 10px;
+    }
+
+    td {
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+    }
+
+    tr:hover {
+      background: #f1f1f1;
+    }
+
+    .btn {
+      padding: 8px 12px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .btn-pdf {
+      background: green;
+      color: white;
+    }
+
+    .btn-home {
+      background: #555;
+      color: white;
+    }
+
+    .title-cat {
+      text-align: center;
+      margin: 10px 0;
+      color: #444;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>📦 Catálogo de Productos</h1>
+
+<form action="/presCatalogo" method="POST">
+
+  <select name="cboCategoria">
+    <option value="0">-- Elige una categoría --</option>
+
+    <% if (Categorias && Categorias.length) { %>
+      <% Categorias.forEach(function(categoria) { %>
+        <option value="<%= categoria.IdCategoria %>">
+          <%= categoria.NombreCategoria %>
+        </option>
+      <% }); %>
+    <% } %>
+
+  </select>
+
+  <button class="btn" type="submit">Ver Productos</button>
+
+</form>
+
+<% if (NombCat) { %>
+  <h2 class="title-cat"><%= NombCat %></h2>
+<% } %>
+
+<% if (Productos && Productos.length) { %>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>PRODUCTO</th>
+      <th>PRESENTACIÓN</th>
+      <th>PRECIO</th>
+      <th>EXISTENCIA</th>
+      <th>DESCUENTO</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% Productos.forEach(function(producto) { %>
+      <tr>
+        <td><%= producto.IdProducto %></td>
+        <td><%= producto.NombreProducto %></td>
+        <td><%= producto.CantidadPorUnidad %></td>
+        <td>S/ <%= producto.PrecioUnidad.toFixed(2) %></td>
+        <td><%= producto.CantidadPorUnidad %></td>
+        <td><%= ((producto.Descuento ?? 0) * 100).toFixed(0) %>%</td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>
+
+<% } else { %>
+  <p style="text-align:center; color:gray;">No hay productos para mostrar</p>
+<% } %>
+
+<br>
+
+<form action="/Rpt_Productos" method="POST" style="text-align:center;">
+  <button class="btn btn-pdf" type="submit">📄 Ver PDF</button>
+</form>
+
+<div style="text-align:center; margin-top:10px;">
+  <a href="/">
+    <button class="btn btn-home">Volver al Home</button>
+  </a>
+</div>
+
+
+</body>
+</html>

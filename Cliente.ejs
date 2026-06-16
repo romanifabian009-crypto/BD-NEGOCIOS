@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clientes</title>
+</head>
+<body>
+
+<h2>CRUD CLIENTES</h2>
+
+<form action="/InsertarCliente" method="POST">
+
+    <p>ID Cliente</p>
+    <input type="text" name="IdCliente">
+
+    <p>Nombre Cliente</p>
+    <input type="text" name="NombreCliente">
+
+    <p>Dirección</p>
+    <input type="text" name="Direccion">
+
+    <p>Ciudad</p>
+    <input type="text" name="Ciudad">
+
+    <br><br>
+
+    <button type="submit">
+        Nuevo Cliente
+    </button>
+
+</form>
+
+<hr>
+
+<form action="/ActualizarCliente" method="POST">
+
+    <p>ID Cliente</p>
+    <input type="text" name="IdCliente">
+
+    <button type="submit">
+        Actualizar Cliente
+    </button>
+
+</form>
+
+<hr>
+
+<form action="/EliminarCliente" method="POST">
+
+    <p>ID Cliente</p>
+    <input type="text" name="IdCliente">
+
+    <button type="submit">
+        Eliminar Cliente
+    </button>
+
+</form>
+
+<br>
+
+<a href="/">
+    <button>Volver al Home</button>
+</a>
+
+</body>
+</html>

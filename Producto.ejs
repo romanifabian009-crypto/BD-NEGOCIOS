@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Productos</title>
+</head>
+<body>
+
+<h2>CRUD PRODUCTOS</h2>
+
+<form action="/InsertarProducto" method="POST">
+
+    <p>ID Producto</p>
+    <input type="text" name="IdProducto">
+
+    <p>Nombre Producto</p>
+    <input type="text" name="NombreProducto">
+
+    <p>ID Categoria</p>
+    <input type="text" name="IdCategoria">
+
+    <p>Presentación</p>
+    <input type="text" name="CantidadPorUnidad">
+
+    <p>Precio</p>
+    <input type="text" name="PrecioUnidad">
+
+    <br><br>
+
+    <button type="submit">
+        Nuevo Producto
+    </button>
+
+</form>
+
+<hr>
+
+<form action="/ActualizarProducto" method="POST">
+
+    <p>ID Producto</p>
+    <input type="text" name="IdProducto">
+
+    <button type="submit">
+        Actualizar Producto
+    </button>
+
+</form>
+
+<hr>
+
+<form action="/EliminarProducto" method="POST">
+
+    <p>ID Producto</p>
+    <input type="text" name="IdProducto">
+
+    <button type="submit">
+        Eliminar Producto
+    </button>
+
+</form>
+
+<br>
+
+<a href="/">
+    <button>Volver al Home</button>
+</a>
+
+</body>
+</html>
